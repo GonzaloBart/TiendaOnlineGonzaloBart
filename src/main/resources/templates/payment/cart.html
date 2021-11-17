@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Carrito</title>
+<!--  Header -->
+<link href="/css/theme-1.css" rel="stylesheet" type="text/css"
+	media="all" />
+
+<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!--   -->
+
+
+</head>
+
+<body>
+
+	<div th:replace="fragments :: nav-container"></div>
+
+	<div class="main">
+		<h1>Tu Carrito de la Compra</h1>
+		<h2 class="sub-heading">Sin Gastos de envio a parti de 100€</h2>
+
+		<section class="shopping-cart">
+
+			<link
+				href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+				rel="stylesheet">
+			<div class="container">
+				<table id="cart" class="table table-hover table-condensed">
+					<thead>
+						<tr>
+							<th style="width: 50%">Product</th>
+							<th style="width: 10%">Price</th>
+							<th style="width: 8%">Quantity</th>
+							<th style="width: 22%" class="text-center">Subtotal</th>
+							<th style="width: 10%"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="linea: ${session.carrito}">
+							<td>
+								<div class="row">
+									<div class="col-sm-2 hidden-xs">
+										<img style="max-height:110px" th:src="${linea.producto.imagen}" alt="..."
+											class="img-responsive" />
+									</div>
+									<div class="col-sm-10">
+										<h4 class="nomargin" th:text="${linea.producto.nombre}">Producto
+										</h4>
+										<p th:text="${mensaje}"></p>
+										
+										<p th:text="${linea.producto.descripcion}">Producto</p>
+									</div>
+								</div>
+							</td>
+							<td th:text="${linea.producto.precio}">Precio</td>
+							<td th:text="${linea.unidades}"><input type="number"
+								class="form-control text-center" value="1"></td>
+							<td th:text="${linea.total} + €" class="text-center">1.99</td>
+							<td class="actions">
+							
+								<button class="btn btn-info btn-sm"> <a th:href="@{/product/addCarrito/}+${linea.producto.id}" >
+									Añadir 1  <i class="fa fa-refresh"></i>
+							</a></button>
+								<p th:text="${mensaje}"></p>
+								<button class="btn btn-danger btn-sm"><a th:href="@{/product/delCarrito/}+${linea.producto.id}" >
+									Eliminar 1  <i class="fa fa-trash-o"></i>
+								</a></button>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="visible-xs">
+							<td class="text-center"><strong>Total</strong></td>
+						</tr>
+						<tr>
+							<td><a th:href="@{/}" class="btn btn-warning"><i
+									class="fa fa-angle-left"></i> Continua Comprando</a></td>
+							<td colspan="2" class="hidden-xs"></td>
+							<td class="hidden-xs text-center"><strong
+								th:text="${total}+ ' €'">Total </strong></td>
+							<td><a th:href="@{/payment/method}" class="btn btn-success btn-block">Realizar Pago
+									<i class="fa fa-angle-right"></i>
+							</a></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			
+		</section>
+		
+	</div>
+
+
+
+	<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>

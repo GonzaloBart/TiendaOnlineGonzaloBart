@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="fragments :: head">
+
+</head>
+
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+	<div class="table-container">
+
+	<h3>Listar Valoracion</h3>
+    <table class="table table-striped">
+        <tr>
+            <th>Id Producto</th>        
+        	<th>Id usuario</th>
+			<th>Valoracion</th>
+			<th>Comentario</th>
+						<th></th>
+						<th></th>
+			
+			
+		</tr>
+        <tr th:each="valoracion : ${list}">
+            <td th:text="${valoracion.producto.id}">Id Producto</td>
+            <td th:text="${valoracion.usuario.id}">Id Usuario</td>
+            <td th:text="${valoracion.valoracion}">Valoracion</td>
+            <td th:text="${valoracion.comentario}">Comentario</td>
+           
+            
+   		  	         
+            <td><a th:href="@{/reviews/delete/}+${valoracion.id}">Eliminar</a></td>
+            <td><a th:href="@{/reviews/edit/}+${valoracion.id}">Editar</a></td>
+        </tr>
+    </table>
+    		</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+
+</body>
+</html>

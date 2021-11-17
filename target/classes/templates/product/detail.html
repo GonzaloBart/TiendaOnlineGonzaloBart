@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!--  Header -->
+<link th:href="@{/css/theme-1.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{css/bootstrap.min.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{/css/flexslider.min.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link th:href="@{/css/detail.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<title th:text="${producto.nombre}"></title>
+</head>
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+	<div style="margin-top:150px; margin-bottom:50px;" class="container">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+						
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic"><img th:src="${producto.imagen}" /></div>
+					
+						</div>
+						
+					</div>
+					<div class="details col-md-6">
+						<h3 th:text="${producto.nombre}" class="product-title"></h3>
+						<div class="rating">
+							
+							<span th:text="${numVal } + ' valoraciones'" class="review-no"></span>
+						</div >
+						<h3 th:text="${producto.descripcion}" class="product-description"></h3>
+						
+						<div style="clear: both;">
+						<br>
+						<h4 style="float: left; margin-bottom: 20px; margin-top:0px;">Precio: </h4> &nbsp; &nbsp; &nbsp; &nbsp;<h3 style="display:inline;" th:text="${producto.precio}+ €" class="price">current price: <span>$180</span></h3>
+						</div>
+						<div style="clear: both;">
+						<h4 style="float: left; margin-bottom: 20px; margin-top:0px;">Stock: </h4> &nbsp; &nbsp; &nbsp; &nbsp; <h3 style="display:inline;" th:text="${producto.stock}" class="price">current price: <span>Stock</span></h3>
+						</div>
+						
+						
+						<p class="vote"> La valoracion media es de <strong th:text="${media}"></strong> / 5</p>
+						<div class="action">
+							<button class="add-to-cart btn btn-default" type="button"><a th:href="@{/product/addCarrito/}+${producto.id}">Añadir a Carrito</a></button>
+						</div>
+					</div>
+				</div>
+									<div th:each="valoracion : ${listVal}" class="textarea"> <div th:text="${valoracion.id_usuario}"></div><p th:text="${valoracion.comentario}"></p></div>
+				
+			</div>
+		</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+</script>
+</body>
+</html>

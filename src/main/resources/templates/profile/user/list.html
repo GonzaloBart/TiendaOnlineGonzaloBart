@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments :: head"></head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+
+
+	<div class="table-container">
+
+		<h3 class="h3-tabla">Lista Pedidos</h3>
+		<div>
+			<table class="table table-striped">
+				<tr>
+					<th>Estado</th>
+					<th>Num Factura</th>
+					<th>Metodo Pago</th>
+					<th>Usuario</th>
+					<th>Total</th>
+					<th></th>
+					<th>Cancelar</th>
+					<th></th>
+			
+			<!-- HTML !-->
+				</tr>
+
+				<tr th:each="pedido : ${list}">
+					<td th:text="${pedido.estado}">Id</td>
+					<td th:text="${pedido.numFactura}">Id</td>
+					<td th:text="${pedido.metodoPago.metodoPago}">Id</td>
+					<td th:text="${pedido.usuario.email}"></td>
+					<td th:text="${pedido.total}"></td>
+					
+
+					<td><a th:href="@{/details/list/order/}+${pedido.id}">Detalles</a></td>
+					
+					<div th:if="${pedido.estado}==pendiente">
+					<form th:action="@{/order/user/cancel/}" method="post">
+						<td><select name="estado">
+						<option th:value="cancelado"> Cancelar Pedido</option>
+						</select></td>
+					<input  type="hidden" name="id" th:value="${pedido.id}" />
+						<td>
+						<p >
+							<button class="button-12" role="button"  type="submit" value="Enviar" />
+						OK</button> </p></td>
+					</form>
+					</div>
+					<div th:if="${pedido.estado}!=pendiente">
+					<td th:text="${pedido.estado}">Id</td>
+					<td ><a th:href="@{/details/pdf/}+${pedido.id}">Factura</a></td>
+					</div>
+				</tr>
+
+
+			</table>
+		</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+
+</body>
+</html>

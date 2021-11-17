@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Editar Producto</title>
+<!--  Header -->
+<link href="/css/theme-1.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!--   -->
+<link th:href="@{/css/editform.css}" rel="stylesheet"
+	type="text/css" media="all" />
+
+</head>
+
+<body>
+	<div th:replace="fragments :: loader"></div>
+	<div th:replace="fragments :: nav-container"></div>
+
+	<div class="modal">
+		<div class="modal__container">
+			<div class="modal__featured">
+				<button type="button" class="button--transparent button--close">
+					<svg class="nc-icon glyph" xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						width="32px" height="32px" viewBox="0 0 32 32">
+            <g>
+						<path fill="#ffffff"
+							d="M1.293,15.293L11,5.586L12.414,7l-8,8H31v2H4.414l8,8L11,26.414l-9.707-9.707 C0.902,16.316,0.902,15.684,1.293,15.293z"></path> </g></svg>
+					<span class="visuallyhidden">Return to Product Page</span>
+				</button>
+				<div class="modal__circle"></div>
+				<img class="productDetail" th:src="${productos.imagen}" />
+			</div>
+			<div class="modal__content">
+				<h3>Editar Producto</h3>
+<br><br>
+				<form th:action="@{/product/edit/submit}" th:object="${productos}"
+					method="post">
+					<ul class="form-list">
+						<li class="form-list__row"><label>Nombre</label> <input
+							type="text" id="name" name="name" placeholder="Nombre"
+							th:field="*{nombre}" /></li>
+						<li class="form-list__row"><label>Id Categoria</label> <input
+							type="number" id="pass" name="pass" placeholder="Categoria"
+							th:field="*{categoria.id}" /></li>
+						<li class="form-list__row"><label>Descripcion</label> <input
+							type="text" id="email" name="email" placeholder="Descripcion"
+							th:field="*{descripcion}" /></li>
+						<li class="form-list__row"><label>Precio</label> <input
+							type="number" id="email" name="email" placeholder="Precio"
+							th:field="*{precio}" /></li>
+						<li class="form-list__row"><label>Stock</label> <input
+							type="number" id="email" name="email" placeholder="Stock"
+							th:field="*{stock}" /></li>
+						<li class="form-list__row"><label>Impuesto</label> <input
+							type="number" id="email" name="email" placeholder="Impuesto"
+							th:field="*{impuesto}" /></li>
+						<li class="form-list__row"><label>Ruta Imagen</label> <input
+							type="text" id="email" name="email" placeholder="Imagen"
+							th:field="*{imagen}" />
+						<li>
+							<button class="button">Guardar</button>
+						</li>
+						<input type="hidden" id="id" name="id" th:field="*{id}" />
+
+					</ul>
+				</form>
+			</div>
+			<!-- END: .modal__content -->
+		</div>
+		<!-- END: .modal__container -->
+	</div>
+	<!-- END: .modal -->
+
+
+
+<div style="margin-top: 150px;"> 
+	<footer th:replace="fragments :: footer"></footer></div>
+	<div th:replace="fragments :: scripts"></div>
+	
+</body>
+</html>

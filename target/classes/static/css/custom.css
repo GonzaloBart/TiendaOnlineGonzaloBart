@@ -1,0 +1,116 @@
+.container-filter-wine {
+    display: flex;
+}
+
+.container{
+	width: 900px;
+}
+.footer-div{
+	margin-top:50px;
+}
+.filter-wine-row {}
+
+.wrapper{
+margin-top: 200px;
+}
+
+.button-12 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2px 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    border-radius: 6px;
+    border: none;
+    font-size: 12px;
+    height: 20px;
+    background: #6E6D70;
+    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+    color: #DFDEDF;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-12:focus {
+    box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+    outline: 0;
+}
+
+.button-easy {
+    width: 80px;
+    background-color: #eddbee;
+    border-radius: 10px;
+}
+
+/*profile*/
+.d-flex {
+    padding-right: 80px;
+}
+
+.px-3 {
+    background-color: #530031;
+    border-radius: 10px;
+    color: white;
+    width: 40%;
+    align-content: center;
+    text-align: center;
+}
+
+a.link-profile {
+    color: white;
+}
+
+.user-welcome {
+    margin-left: 50px;
+}
+
+.px-3:hover {
+    background: #8a774f;
+}
+
+.profile-container {
+    margin-top: 180px;
+    background-color: #f7f6f6;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #530031;
+}
+
+.profile-button {
+    background: #530031;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #8a774f;
+}
+
+.profile-button:focus {
+    background: #530031;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #530031;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #530031;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #530031;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #530031;
+}

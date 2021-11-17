@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head th:replace="fragments :: head">
+
+</head>
+
+<body>
+	<div th:replace="fragments :: loader"></div>
+	<div th:replace="fragments :: nav-container"></div>
+
+
+	<div class="main-container">
+		<header class="fullscreen-element no-pad centered-text">
+			<div class="background-image-holder parallax-background overlay">
+				<img class="background-image" alt="Background Image"
+					src="img/main_image.jpg">
+			</div>
+
+			<div class="container align-vertical">
+				<div class="row">
+					<div class="col-md-7 col-sm-8">
+
+						<h1 class="text-white"
+							th:text="${session.diccionario.getString('index_h1')}">Estuches
+							regalo, Grandes vinos, accesorios. Regalos perfectos para los
+							amantes del vino. Te garantizamos la calidad y los precios más
+							bajos. Regalos para todos los bolsillos.</h1>
+						<p class="lead text-white"
+							th:text="${session.diccionario.getString('index_main_p')}">Colección
+							de Vinos excepcional.</p>
+						<a th:href="@{/login}"
+							class="btn btn-primary btn-white inner-link" target="_self"
+							th:text="${session.diccionario.getString('login')}">Login</a> <a
+							th:href="@{/signup}"
+							class="btn btn-primary btn-filled inner-link" target="_self"
+							th:text="${session.diccionario.getString('signup')}">Signup</a>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+
+	<div class="main-container">
+
+
+		<section class="team-1">
+			<div class="container-filter-wine">
+
+				<div class="filter-wine-row">
+					<form th:action="@{/search/keyword}" th:object="${producto}"
+						method="get">
+						<input class="input-wine" type="search" placeholder="Busqueda"
+							name="keyword">
+						<button class="search-button-wine">Buscar</button>
+
+					</form>
+				</div>
+				<div class="filter-wine-row">
+					<form th:action="@{/search/cat/precio}" th:object="${producto}"
+						method="get">
+						<input class="input-wine" type="number" id="precio" name="precio"
+							placeholder="Precio Maximo" /> <input class="input-wine"
+							type="number" id="precio" name="precio2"
+							placeholder="Precio Minimo" />
+
+						<button class="search-button-wine">Buscar</button>
+					</form>
+				</div>
+				<div class="filter-wine-row">
+					<form th:action="@{/search/categ}" th:object="${categoria}"
+						method="get">
+						<select class="input-wine3" name="id">
+							<option th:each="categoria : ${catList}"
+								th:value="${categoria.id}" th:text="${categoria.nombre}" />
+						</select>
+						<button class="search-button-wine">Buscar</button>
+
+
+					</form>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center">
+						<h1 th:text="${session.diccionario.getString('body_h1')}">La
+							mejor selección de vinos</h1>
+						<p class="lead"></p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div th:each="producto: ${productList}" class="col-md-2 col-sm-4">
+						<div class="team-1-member">
+							<img alt="Team Member" class="background-image"
+								th:src="${producto.imagen}">
+							<h5 th:text="${producto.nombre}"></h5>
+							<span th:text="${producto.precio} + €"></span><br>
+							<br>
+							<br>
+							<button type="button" class="button-easy" />
+							<a th:href="@{/product/detail/}+${producto.id}">Detalle <span
+								class="glyphicon glyphicon-eye-open"></span></span></a>
+							</button>
+
+							<button type="button" class="button-easy" />
+							<a th:href="@{/product/addCarrito/}+${producto.id}">Comprar <span
+								class="glyphicon glyphicon-shopping-cart"></span>
+							</a>
+							</button>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="head">
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="shortcut icon"   th:src="@{/img/logotype_dark.png}"/>
+
+<link
+	th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}"
+	rel="stylesheet">
+<!--  Header -->
+<link th:href="@{/css/theme-1.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{/css/flexslider.min.css}" rel="stylesheet"
+	type="text/css" media="all" />
+<link th:href="@{/css/line-icons.min.css}" rel="stylesheet"
+	type="text/css" media="all" />
+<link th:href="@{/css/elegant-icons.min.css}" rel="stylesheet"
+	type="text/css" media="all" />
+<link th:href="@{/css/lightbox.min.css}" rel="stylesheet"
+	type="text/css" media="all" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css" media="all" />
+<link th:href="@{/css/custom.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<!--[if gte IE 9]>
+        	<link rel="stylesheet" type="text/css" href="css/ie9.css" />
+		<![endif]-->
+<!-- form -->
+
+
+<!-- Extra -->
+<link rel="stylesheet"
+	th:href="@{//maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}">
+
+
+
+<title>Vinos Applause</title>
+
+
+</head>
+
+<body>
+
+	<div th:fragment="loader" class="loader">
+		<div class="spinner">
+			<div class="double-bounce1"></div>
+			<div class="double-bounce2"></div>
+		</div>
+	</div>
+
+	<div th:fragment="nav-container" class="nav-container">
+		<nav class="centered-logo top-bar">
+			<div class="container">
+
+
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<a th:href="@{/}"> <img class="logo logo-dark" alt="Logo"
+							th:src="@{/img/logotype_dark.png}">
+					</div>
+				</div>
+
+				<div th:if="${session.usuario} != null">
+					<div th:switch="${session.usuario.rol.id}" class="row nav-menu">
+
+						<div th:case="1" class="col-sm-12 columns text-center">
+							<ul class="menu">
+								<a></a>
+								<li><a th:href="@{/}">Inicio</a></li>								
+								<li><a th:href="@{/payment}"><span
+										class="glyphicon glyphicon-shopping-cart"></span> <span
+										th:text="${session.unitsCarrito}"></span> Pagar</a></li>
+								<li><a th:href="@{/users/profile/user}">Perfil</a></li>							
+								<li><a th:href="@{/logout}">Salir</a></li>
+								<li><a th:text="'Hola ' + ${session.usuario.nombre}"></a></li>
+								
+
+							</ul>
+
+						</div>
+						<div th:case="2" class="col-sm-12 columns text-center">
+							<ul class="menu">
+								<a></a>
+								
+								<li><a href="#">Usuarios</a>
+									<ul class="dropdown">
+										<li><a th:href="@{/users/add}">Nuevo</a></li>
+										<li><a th:href="@{/users/employee/list}">Usuarios</a></li>
+
+									</ul></li>
+								
+								<li><a href="#">Productos</a>
+									<ul class="dropdown">
+										<li><a th:href="@{/product/add}">Nuevo producto</a></li>
+										<li><a th:href="@{/product/list}">Gestionar
+												productos</a></li>
+									</ul></li>
+
+								<li><a href="#">Pedidos</a>
+									<ul class="dropdown">
+										<li><a th:href="@{/order/add}">Añadir</a></li>
+										<li><a th:href="@{/order/list}">Pedidos</a></li>
+
+									</ul></li>
+
+								<li><a href="#">Categorias</a>
+									<ul class="dropdown">
+										<li><a th:href="@{/category/add}">Nueva</a></li>
+										<li><a th:href="@{/category/list}">Categorias</a></li>
+									</ul></li>
+
+								
+										
+										
+										<li><a th:href="@{/users/profile/employee}">Perfil</a></li>
+										
+										<li><a th:href="@{/logout}">Salir</a></li>
+								<li class="user-welcome"><a th:text="'Hola ' + ${session.usuario.nombre}"></a></li>
+											</ul>
+
+						</div>
+						<div th:case="3" class="col-sm-12 columns text-center">
+							<ul class="menu">
+								<a></a>
+								
+								<li><a href="#">Usuarios</a>
+									<ul class="dropdown">
+										<li><a th:href="@{/users/add}">Nuevo</a></li>
+										<li><a th:href="@{/users/list}">Usuarios</a></li>
+
+									</ul></li>
+								
+								<li><a href="#">Productos</a>
+									<ul class="dropdown">
+										<li><a th:href="@{/product/add}">Nuevo producto</a></li>
+										<li><a th:href="@{/product/list}">Gestionar
+												productos</a></li>
+									</ul></li>
+
+								<li><a href="#">Pedidos</a>
+									<ul class="dropdown">
+										<li><a th:href="@{/order/add}">Añadir</a></li>
+										<li><a th:href="@{/order/list}">Pedidos</a></li>
+
+									</ul></li>
+
+								
+
+								<li><a href="#">Otros</a>
+									<ul class="dropdown">
+											<li><a href="#">Categorias</a>
+									<ul class="dropdown">
+										<li><a th:href="@{/category/add}">Nueva</a></li>
+										<li><a th:href="@{/category/list}">Categorias</a></li>
+									</ul></li>
+
+										<li><a href="#">Configuraciones</a>
+											<ul class="dropdown">
+												<li><a style="color: #901c2e;"
+													th:href="@{/config/add}">Crear Config</a></li>
+												<li><a style="color: #901c2e;"
+													th:href="@{/config/list}">Configuraciones</a></li>
+
+											</ul></li>
+										<li><a href="#">Pago</a>
+											<ul class="dropdown">
+												<li><a style="color: #901c2e;"
+													th:href="@{/method/list}">Metodos de Pago</a></li>
+												<li><a style="color: #901c2e;"
+													th:href="@{/method/add}">Nuevo Metodo</a></li>
+											</ul></li>
+										<li><a href="#">Valoraciones</a>
+											<ul class="dropdown">
+												<li><a style="color: #901c2e;"
+													th:href="@{/reviews/add}">Añadir</a></li>
+												<li><a style="color: #901c2e;"
+													th:href="@{/reviews/list}">Valoraciones</a></li>
+
+											</ul></li>
+											</ul>
+										<li><a th:href="@{/users/profile/admin}">Perfil</a></li>
+										
+										<li><a th:href="@{/logout}">Salir</a></li>
+								<li><a th:text="'Hola ' + ${session.usuario.nombre}"></a></li>
+
+									
+						</div>
+					</div>
+
+				</div>
+
+				<div th:unless="${session.usuario} != null" class="row nav-menu">
+
+					<div class="col-sm-12 columns text-center">
+						<ul class="menu">
+							<a></a>
+							<li><a th:href="@{/}">Inicio</a></li>
+							<li><a th:href="@{/login}">Login</a></li>
+							<li><a th:href="@{/signup}">Crear Cuenta</a></li>
+							<li><a th:href="@{/payment}"><span
+									class="glyphicon glyphicon-shopping-cart"></span> <span
+									th:text="${session.unitsCarrito}">Units</span> Pagar</a></li>
+							<li><a th:href="@{/idioma} + '?idioma=en'">EN</a> / <a th:href="@{/idioma} + '?idioma=es'">ES</a></li>
+						</ul>
+
+					</div>
+				</div>
+				<div class="mobile-toggle">
+					<i class="icon icon_menu"></i>
+				</div>
+
+			</div>
+			<div class="bottom-border"></div>
+		</nav>
+	</div>
+
+
+
+
+
+	<footer th:fragment="footer" class="short bg-secondary-1">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<ul class="social-icons">
+						<li><a href="#"> <i class="icon social_twitter"></i>
+						</a></li>
+
+						<li><a href="#"> <i class="icon social_facebook"></i>
+						</a></li>
+					</ul>
+					<br> <br> <br> <font color="a87f97">©
+						Copright 2021 Vino de Toro.&nbsp; Designed by Gonzalo</font>.</span>
+
+
+
+				</div>
+
+
+			</div>
+		</div>
+	</footer>
+
+	<div th:fragment="scripts">
+		<script th:src="@{/js/jquery.min.js}"></script>
+		<script th:src="@{/js/jquery.plugin.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/jquery.flexslider-min.js}"></script>
+		<script th:src="@{/js/smooth-scroll.min.js}"></script>
+		<script th:src="@{/js/skrollr.min.js}"></script>
+		<script th:src="@{/js/spectragram.min.js}"></script>
+		<script th:src="@{/js/scrollReveal.min.js}"></script>
+		<script th:src="@{/js/isotope.min.js}"></script>
+		<script th:src="@{/js/twitterFetcher_v10_min.js}"></script>
+		<script th:src="@{/js/lightbox.min.js}"></script>
+		<script th:src="@{/js/jquery.countdown.min.js}"></script>
+		<script th:src="@{/js/scripts.js}"></script>
+	</div>
+
+
+</body>
+</html>

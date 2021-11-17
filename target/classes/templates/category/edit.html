@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Editar Categoria</title>
+	
+
+	<!--  Header -->
+<link th:href="@{/css/theme-1.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}">
+<!--   -->
+
+<link th:href="@{/css/form.css}" rel="stylesheet" type="text/css"
+	media="all" />
+</head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+<div class="testbox">
+    <form th:action="@{/category/edit/submit}" th:object="${categoria}" method="post" >
+        
+        <div class="item">
+	    <input type="hidden" id="id" name="id" placeholder="id" th:field="*{id}" readonly/>
+        </div>
+        
+        <div class="item">
+          <label for="name">Nombre<span>*</span></label>
+	    <input type="text" id="name" name="nombre" placeholder="Nombre" th:field="*{nombre}"/>
+        </div>
+        <div class="item">
+          <label for="descripcion">Descripcion<span>*</span></label>
+	      <input type="text" id="name" name="descripcion" placeholder="Nombre" th:field="*{descripcion}"/>
+        </div>
+        
+        <div class="btn-block">
+          <button type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+	
+	<footer th:replace="fragments :: footer"></footer>
+	
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="fragments :: head">
+
+</head>
+
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+
+
+	<div class="table-container">
+
+
+		<h3 class="h3-tabla">Lista Usuarios</h3>
+		<div>
+
+			<form th:action="@{/users/filter/list}" th:object="${rol}"
+				method="get">
+				<select class="input-wine3" name="id">
+					<option th:each="rol : ${rolList}" th:value="${rol.id}"
+						th:text="${rol.rol}" />
+				</select>
+				<button class="search-button-wine">Buscar</button>
+
+
+			</form>
+
+		</div>
+		<br> <br>
+
+		<div>
+			<table class="table table-striped">
+				<tr>
+					<th>Id</th>
+					<th>Rol</th>
+					<th>Email</th>
+
+					<th>Nombre</th>
+					<th>Apellido1</th>
+					<th>Apellido2</th>
+					<th>Direccion</th>
+					<th>Localidad</th>
+					<th>Provincia</th>
+					<th>Telefono</th>
+					<th>DNI</th>
+					<th></th>
+					<th></th>
+
+
+
+				</tr>
+
+				<tr th:each="usuario : ${lista}">
+					<td th:text="${usuario.id}">Id</td>
+					<td th:text="${usuario.rol.id}">Nombre</td>
+					<td th:text="${usuario.email}">Email</td>
+
+					<td th:text="${usuario.nombre}">Email</td>
+					<td th:text="${usuario.apellido1}">Email</td>
+					<td th:text="${usuario.apellido2}">Email</td>
+					<td th:text="${usuario.direccion}">Email</td>
+					<td th:text="${usuario.localidad}">Email</td>
+					<td th:text="${usuario.provincia}">Email</td>
+					<td th:text="${usuario.telefono}">Email</td>
+					<td th:text="${usuario.dni}">Email</td>
+
+					<div th:if="${session.usuario.rol.id}==3">
+						<td th:if="${usuario.baja}==false"><a
+							th:href="@{/users/employee/delete/}+${usuario.id}">Eliminar</a></td>
+						<td th:if="${usuario.baja}==true"><span>Baja</span></td>
+						<td th:if="${usuario.baja}==false"><a th:href="@{/users/edit/}+${usuario.id}">Editar</a></td>
+						<td th:if="${usuario.baja}==true"><span></span></td>
+					</div>
+					<div th:if="${session.usuario.rol.id}==2">
+						<td th:if="${usuario.baja}==false"><a
+							th:href="@{/users/employee/delete/}+${usuario.id}">Eliminar</a></td>
+						<td th:if="${usuario.baja}==true"><span>Baja</span></td>
+						<td th:if="${usuario.baja}==false"><a th:href="@{/users/employee/edit/}+${usuario.id}">Editar</a></td>
+						<td th:if="${usuario.baja}==true"><span></span></td>
+					</div>
+				</tr>
+
+
+
+			</table>
+		</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+
+</body>
+</html>

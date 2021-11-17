@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Editar Metodo Pago</title>
+	
+
+<!--  Header -->
+<link th:href="@{/css/theme-1.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}">
+<!--   -->
+
+<link th:href="@{/css/form.css}" rel="stylesheet" type="text/css"
+	media="all" />
+</head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+<div class="testbox">
+      <form th:action="@{/method/edit/submit}" th:object="${metodo}" method="post">
+        
+        
+         <div class="item">
+          <label for="name">Metodo de Pago<span>*</span></label>
+	    <input type="text" id="metodoPago" name="metodoPago" placeholder="Metodo de Pago" th:field="*{id}" readonly/>
+	    
+        </div>
+        
+        <div class="item">
+          <label for="name">Metodo de Pago<span>*</span></label>
+	    <input type="text" id="metodoPago" name="metodoPago" placeholder="Metodo de Pago" th:field="*{metodoPago}"/>
+	    
+        </div>
+     
+        <div class="btn-block">
+          <button type="submit" href="/">Crear</button>
+        </div>
+      </form>
+    </div>
+	</form>
+	
+	<footer th:replace="fragments :: footer"></footer>
+	
+</body>
+</html>

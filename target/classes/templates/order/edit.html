@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Editar Pedido</title>
+	
+
+	<!--  Header -->
+<link th:href="@{/css/theme-1.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}">
+<!--   -->
+
+<link th:href="@{/css/form.css}" rel="stylesheet" type="text/css"
+	media="all" />
+</head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+<div class="testbox">
+      <form th:action="@{/order/edit/submit}" th:object="${pedidos}" method="post">
+        
+        <div class="item">
+          <label for="name">Id<span>*</span></label>
+	    <input type="text" id="name" name="id" placeholder="Id" th:field="*{id}" readonly/>
+        </div>
+        <div class="question">
+          <label>Estado</label>
+          
+          
+          
+          <div th:field="*{estado}" class="question-answer">
+            <div >
+              <input type="radio" value="pendiente" id="radio_1" name="estado" required/>
+              <label for="radio_1" class="radio"><span>Pendiente</span></label>
+            </div>
+            <div>
+              <input  type="radio" value="enviado" id="radio_2" name="estado" required/>
+              <label for="radio_2" class="radio"><span>Enviado</span></label>
+            </div>
+             <div>
+              <input  type="radio" value="cancelado" id="radio_3" name="estado" required/>
+              <label for="radio_3" class="radio"><span>Cancelado</span></label>
+            </div>
+          </div>
+        </div>
+        
+        
+       
+        <div class="item">
+          <label for="metodo">Metodo de Pago<span>*</span></label>
+	    <input type="text" id="name" name="descripcion" placeholder="Metodo de Pago" th:field="*{metodoPago.id}"/>
+        </div>
+        <div class="item">
+          <label for="numFactura">Numero de Factura<span>*</span></label>
+	     <input type="text" id="name" name="descripcion" placeholder="Numero Factura" th:field="*{numFactura}"/>
+        </div>
+        <div class="item">
+          <label for="state">Total<span>*</span></label>
+	     <input type="text" id="name" name="descripcion" placeholder="Total" th:field="*{total}"/>
+        </div>
+        <div class="item">
+          <label for="zip">Id Usuario<span>*</span></label>
+	     <input type="text" id="name" name="descripcion" placeholder="ID Usuario" th:field="*{usuario.id}" readonly/>
+        </div>
+        <div class="item">
+          <label for="zip">Id Usuario<span>*</span></label>
+        <input type="text" id="name" name="descripcion" placeholder="Usuario" th:field="*{usuario.email}" readonly/>
+        </div>
+        
+        
+      
+        <div class="btn-block">
+          <button type="submit" href="/">Guardar</button>
+        </div>
+      </form>
+    </div>
+
+
+
+	
+	<footer th:replace="fragments :: footer"></footer>
+	
+</body>
+</html>

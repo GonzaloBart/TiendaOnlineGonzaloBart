@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Crear Cuenta</title>
+<link
+	th:href="@{//fonts.googleapis.com/css?family=Karla:400,700&display=swap}"
+	rel="stylesheet">
+<link rel="stylesheet"
+	th:href="@{//cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css}">
+<link rel="stylesheet"
+	th:href="@{//stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/assets/css/login.css}">
+<!--  Header -->
+<link th:href="@{/css/theme-1.css}" rel="stylesheet" type="text/css"
+	media="all" />
+		<link th:href="@{/css/custom.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}">
+<!--   -->
+
+</head>
+
+<body>
+<div th:replace="fragments :: nav-container"></div>
+	<main style="margin-top:220px;" class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+		<div style="width: 900px;" class="container">
+			<div class="card login-card">
+				<div class="row no-gutters">
+					<div class="col-md-5">
+						<img th:src="@{/img/add.jpg}" alt="login"
+							class="login-card-img"> 
+					</div>
+					<div class="col-md-7">
+						<div class="card-body">
+							<div class="brand-wrapper">
+								<img style="height: 137px;margin-left: 20%;" src="/img/logotype_dark.png" alt="logo" class="logo">
+							</div>
+							<p class="login-card-description">Crear Cuenta</p>
+							
+							<form th:action="@{/signup/submit}" th:object="${usuario}" method="post">
+
+								<div data-validate="El nombre es obligatorio" class="form-group">
+									<label for="nombre" class="sr-only">Nombre</label> 
+									<input type="nombre" name="nombre" id="nombre" class="form-control"
+										placeholder="Nombre Usuario"  >
+									<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+								</div>
+								<div data-validate="Valid email is required: ex@abc.xyz" class="form-group">
+									<label for="email" class="sr-only">Email</label> 
+									<input type="email" name="email" id="email" class="form-control"
+										placeholder="Email address"  >
+									<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+								</div>
+								<div class="form-group  mb-4">
+									<label for="clave" class="sr-only">Clave</label> 
+									<input type="password" name="clave" id="clave" class="form-control"
+										placeholder="*******" >
+									<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+								</div>
+								
+								<button class="btn btn-block login-btn mb-4">Crear</button>
+							
+							</form>
+							<p th:text="${mensaje}" style="color: red;"></p>
+
+							<a href="#!" class="forgot-password-link"></a>
+							<p class="login-card-footer-text">
+								¿Ya tienes cuenta? <a th:href="@{/login}"> Accede a tu cuenta aquí</a>
+							</p>
+							<nav class="login-card-footer-nav">
+								<a href="#!">Terminos de uso.</a> <a href="#!">Politica de privacidad</a>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+		<div style="margin-top:50px;"><footer th:replace="fragments :: footer"></footer></div>
+	
+	
+	<script th:src="@{//code.jquery.com/jquery-3.4.1.min.js}"></script>
+	<script
+		th:src="@{//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js}"></script>
+	<script
+		th:src="@{//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

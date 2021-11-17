@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Editar Configuración</title>
+	
+
+	<!--  Header -->
+<link th:href="@{/css/theme-1.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}">
+<!--   -->
+
+<link th:href="@{/css/form.css}" rel="stylesheet" type="text/css"
+	media="all" />
+</head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+<div class="testbox">
+    <form th:action="@{/config/edit/submit}" th:object="${configuracion}" method="post" >
+        
+        <div class="item">
+	    <input type="hidden" id="clave" name="id" placeholder="Id" th:field="*{id}" readonly/>
+        </div>
+        <div class="item">
+          <label for="name">Clave<span>*</span></label>
+	    <input type="text" id="clave" name="clave" placeholder="Clave" th:field="*{clave}"/>
+        </div>
+        <div class="item">
+          <label for="email">Valor<span>*</span></label>
+	      <input type="text" id="valor" name="valor" placeholder="Valor" th:field="*{valor}"/>
+        </div>
+        <div class="item">
+          <label for="address">Tipo<span>*</span></label>
+	    <input type="text" id="tipo" name="tipo" placeholder="Tipo" th:field="*{tipo}"/>
+        </div>
+        
+        <div class="btn-block">
+          <button type="submit" href="/">Guardar</button>
+        </div>
+      </form>
+    </div>
+	
+	<footer th:replace="fragments :: footer"></footer>
+	
+</body>
+</html>

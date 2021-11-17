@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Crear Pedido</title>
+	
+
+	<!--  Header -->
+<link th:href="@{/css/theme-1.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}">
+<!--   -->
+
+<link th:href="@{/css/form.css}" rel="stylesheet" type="text/css"
+	media="all" />
+</head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+<div class="testbox">
+      <form th:action="@{/order/add/submit}" th:object="${pedidos}" method="post">
+        
+        <div class="item">
+	    <input type="hidden" id="name" name="id" placeholder="Id" />
+        </div>
+        <div class="question">
+          <label>Estado</label>
+          <div class="question-answer">
+            <div>
+              <input type="radio" value="pendiente" id="radio_1" name="estado" checked required/>
+              <label for="radio_1" class="radio"><span>Pendiente</span></label>
+            </div>
+           
+          </div>
+        </div>
+        
+        
+       
+        <div class="item">
+          <label for="metodo">Metodo de Pago<span>*</span></label>
+          <input id="metodo" type="text" name="metodoPago" required/>
+               </div>
+       
+        <div class="item">
+          <label for="state">Total<span>*</span></label>
+          <input id="state" type="number" name="total" required/>
+        </div>
+        <div class="item">
+          <label for="zip">Id Usuario<span>*</span></label>
+          <input id="zip" type="number" name="usuario.id" required/>
+        </div>
+      
+        <div class="btn-block">
+          <button type="submit" href="/">Crear Pedido</button>
+        </div>
+      </form>
+    </div>
+
+
+
+	
+	<footer th:replace="fragments :: footer"></footer>
+	
+</body>
+</html>

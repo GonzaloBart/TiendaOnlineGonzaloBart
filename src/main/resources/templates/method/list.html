@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments :: head"></head>
+
+<body>
+<div th:replace="fragments :: nav-container"></div>
+
+	<div class="table-container">
+
+<h3 class="h3-tabla">Lista Config</h3>
+	<div>
+		<table  class="table table-striped">
+			<tr>
+				<th>ID</th>
+				<th>Metodo</th>
+				<th></th>
+				<th></th>
+			</tr>
+
+
+	<tr th:each="metodo : ${list}">
+            <td th:text="${metodo.id}">Id</td>
+            <td th:text="${metodo.metodoPago}">Metodo Pago</td>            
+   		  	         
+            <td><a th:href="@{/method/delete/}+${metodo.id}">Eliminar</a></td>
+            <td><a th:href="@{/method/edit/}+${metodo.id}">Editar</a></td>
+        </tr>
+
+
+		</table>
+	</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+	
+</body>
+</html>

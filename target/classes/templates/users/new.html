@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Crear Usuario</title>
+
+
+<!--  Header -->
+<link th:href="@{/css/theme-1.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css" media="all" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}">
+<!--   -->
+
+<link th:href="@{/css/form.css}" rel="stylesheet" type="text/css"
+	media="all" />
+</head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+	<div class="testbox">
+
+		<form th:action="@{/users/add/submit}" th:object="${usuario}"
+			method="post">
+
+
+
+			<div class="item">
+				<label for="name">Nombre<span>*</span></label> <input type="text"
+					id="name" name="nombre" placeholder="Nombre" />
+			</div>
+			<div class="item">
+				<label for="email">Email<span>*</span></label> <input
+					type="email" id="email" name="email" placeholder="Email" />
+			</div>
+			<div class="item">
+				<label for="zip">Clave<span>*</span></label> <input type="password"
+					id="pass" name="clave" placeholder="Contraseña" />
+			</div>
+
+			<div th:if="${session.usuario.rol.id}==3">
+
+				<div class="question">
+					<label>Rol</label>
+					<div class="question-answer">
+						<div>
+							<input type="radio" value="1" id="radio_1" name="rol.id" /> <label
+								for="radio_1" class="radio"><span>Cliente</span></label>
+						</div>
+						<div>
+							<input type="radio" value="2" id="radio_2" name="rol.id" /> <label
+								for="radio_2" class="radio"><span>Empleado</span></label>
+						</div>
+						<div>
+							<input type="radio" value="3" id="radio_3" name="rol.id" /> <label
+								for="radio_3" class="radio"><span>Admin</span></label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div th:if="${session.usuario.rol.id}==2">
+
+				<div class="question">
+					<label>Rol</label>
+					<div class="question-answer">
+						<div>
+							<input type="radio" value="1" id="radio_1" name="rol.id" /> <label
+								for="radio_1" class="radio"><span>Cliente</span></label>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="item">
+				<label for="address">Apellido 1<span>*</span></label> <input
+					type="text" id="name" name="apellido1" placeholder="Apellido1" />
+			</div>
+			<div class="item">
+				<label for="city">Apellido 2<span>*</span></label> <input
+					type="text" id="name" name="apellido2" placeholder="Apellido2" />
+			</div>
+
+
+			<div class="item">
+				<label for="phone">Direccion<span>*</span></label> <input
+					type="text" id="name" name="direccion" placeholder="Direccion" />
+			</div>
+
+			<div class="item">
+				<label for="state">Localidad<span>*</span></label> <input
+					type="text" id="name" name="localidad" placeholder="Localidad" />
+			</div>
+
+			<div class="item">
+				<label for="bdate">Provincia<span>*</span></label> <input
+					type="text" id="name" name="provincia" placeholder="Provincia" />
+			</div>
+			<div class="item">
+				<label for="state">Telefono<span>*</span></label> <input type="text"
+					id="name" name="telefono" placeholder="Telefono" />
+			</div>
+			<div class="item">
+				<label for="state">DNI<span>*</span></label> <input type="text"
+					id="name" name="dni" placeholder="Dni" />
+			</div>
+			<div class="btn-block">
+				<button type="submit">Crear Usuario</button>
+			</div>
+		</form>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments :: head"></head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+
+
+	<div class="table-container">
+
+		<h3 class="h3-tabla">Detalles Pedidos</h3>
+		<div>
+			<table class="table table-striped">
+				<tr>
+					<th>Id Pedido</th>
+					<th>Id Producto</th>
+					<th>Precio Unidad</th>
+					<th>Unidades</th>
+					<th>Total</th>
+					<th>Impuesto</th>
+					<th></th>
+					<th></th>
+					<th></th>
+			
+			<!-- HTML !-->
+				</tr>
+
+
+
+				<tr th:each="detalle : ${list}">
+					<td th:text="${detalle.pedido.id}">Id</td>
+					<td th:text="${detalle.producto.id}">Id</td>
+					<td th:text="${detalle.precioUnidad}">Id</td>
+					<td th:text="${detalle.unidades}">Id</td>
+					<td th:text="${detalle.total}">Id</td>	
+					<td th:text="${detalle.impuesto}">Id</td>
+									
+					<div th:if="${estado}==pendiente">
+					<form th:action="@{/details/cancel}" th:object="${detalle}" method="post">
+						<td></td>
+					<input  type="hidden" name="id" th:value="${detalle.id}" />
+						<td>
+						<p >
+							<button class="button-12" role="button"  type="submit" value="Enviar" />
+						Cancelar</button> </p></td>
+					</form></div>
+					
+				</tr>
+
+
+			</table>
+		</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+
+</body>
+</html>

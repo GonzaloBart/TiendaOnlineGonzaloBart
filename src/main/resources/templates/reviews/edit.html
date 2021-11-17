@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Editar Valoración</title>
+	
+
+	<!--  Header -->
+<link th:href="@{/css/theme-1.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}">
+<!--   -->
+
+<link th:href="@{/css/form.css}" rel="stylesheet" type="text/css"
+	media="all" />
+</head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+<div class="testbox">
+    <form th:action="@{/reviews/edit/submit}" th:object="${valoracion}" method="post" >
+        
+        <div class="item">
+          <label for="name">Id Producto<span>*</span></label>
+	    <input type="text" id="id_producto" name="id_producto" placeholder="Id Producto" th:field="*{id_producto}" readonly/>
+        </div>
+        <div class="item">
+          <label for="descripcion">Id usuario<span>*</span></label>
+	    <input type="text" id="id_usuario" name="id_usuario" placeholder="Id Usuario" th:field="*{id_usuario}" readonly/>
+        </div>
+        <div class="item">
+          <label for="name">Valoración<span>*</span></label>
+	      <input type="text" id="valoracion" name="valoracion" placeholder="Valoracion" th:field="*{valoracion}" required/>
+        </div>
+        <div class="item">
+          <label for="name">Comentario<span>*</span></label>
+	    <input type="text" id="comentario" name="comentario" placeholder="Comentario" th:field="*{comentario}"/>
+        </div>
+	    <input type="hidden" id="id" name="id" placeholder="Id" th:field="*{id}"/>
+        <div class="btn-block">
+          <button type="Guardar">Crear</button>
+        </div>
+      </form>
+    </div>
+	
+	<footer th:replace="fragments :: footer"></footer>
+	
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments :: head">
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+
+
+	<div class="table-container">
+
+		<h3 class="h3-tabla">Configuraciones</h3>
+		<div>
+			<table class="table table-striped">
+				<tr>
+					<th>Id</th>
+					<th>Clave</th>
+					<th>Valor</th>
+					<th>Tipo</th>
+					<th></th>
+					<th></th>
+
+				</tr>
+
+				<tr th:each="configuracion : ${list}">
+					<td th:text="${configuracion.id}">Id</td>
+					<td th:text="${configuracion.clave}">Clave</td>
+					<td th:text="${configuracion.valor}">Valor</td>
+					<td th:text="${configuracion.tipo}">Tipo</td>
+
+
+					<td><a th:href="@{/config/delete/}+${configuracion.id}">Eliminar</a></td>
+					<td><a th:href="@{/config/edit/}+${configuracion.id}">Editar</a></td>
+				</tr>
+
+
+			</table>
+		</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+
+</body>
+</html>

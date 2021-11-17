@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ticket de Compra</title>
+<link th:href="@{/css/ticket.css}" rel="stylesheet" type="text/css"
+	media="all" />
+
+</head>
+<body>
+
+	<div class="invoice-box">
+		<table cellpadding="0" cellspacing="0">
+			<tr class="top">
+				<td colspan="2">
+					<table>
+						<tr>
+							<td class="title"><img
+								th:src="@{/img/logotype_dark.png}"
+								style="width: 100%; max-width: 300px" /></td>
+
+							<td>
+								
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<tr class="information">
+				<td colspan="2">
+					<table>
+						<tr>
+							<td>Applause, Inc.<br /> Avda del Ciprés<br />
+								Zamora, 49001
+							</td>
+
+							<td><span th:text="${session.usuario.nombre}"></span><br /> <span th:text="${session.usuario.dni}"></span><br /> <span th:text="${session.usuario.email}"></span>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+
+
+
+
+			<div th:each="unidades: ${session.carrito}">
+			<tr class="details">
+			
+			</tr>
+			<tr class="heading">
+				<td>Nombre Producto</td>
+
+				<td th:text="${unidades.producto.nombre}"></td>
+			</tr>
+
+			<tr >
+				<td>Unidades</td>
+
+				<td th:text="${unidades.unidades}">Unidades</td>
+			</tr>
+
+			<tr class="item">
+				<td>Precio</td>
+
+				<td th:text="${unidades.producto.precio} + ' €'"></td>
+			</tr>
+			<tr class="item">
+				<td>Subtotal</td>
+
+				<td th:text="${unidades.total} + ' €'"></td>
+			</tr>
+
+			</div>
+
+			<tr class="heading">
+				<th>Metodo de Pago</th>
+				<td th:text="${pedido.metodoPago.metodoPago}"></td>
+				
+				
+			</tr>
+			<tr class="heading">
+
+				<th >Total Pagado</th>
+				<td th:text="${pedido.total}"></td>
+				
+				
+
+			</tr>
+			
+			</table>
+			
+			<button class="button-ticket"><a class="button-ticket-a" th:href="@{/payment/end}">Volver</a></button>
+			
+			
+		
+	</div>
+
+</body>
+</html>

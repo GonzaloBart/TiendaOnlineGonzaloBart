@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments :: head"></head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+
+
+	<div class="table-container">
+
+		<h3 class="h3-tabla">Lista Categorias</h3>
+		<div>
+			<table class="table table-striped">
+				<tr>
+					<th>Categoria</th>
+					<th>Nombre</th>
+					<th>Descripción</th>
+					<th>Accion</th>
+					<th>Accion</th>
+				</tr>
+
+				<tr th:each="categoria : ${list}">
+					<td th:text="${categoria.id}">Id</td>
+
+					<td th:text="${categoria.nombre}">Nombre</td>
+					<td th:text="${categoria.descripcion}">Descripcion</td>
+
+					<td><a th:href="@{/category/delete/}+${categoria.id}">Eliminar</a></td>
+					<td><a th:href="@{/category/edit/}+${categoria.id}">Editar</a></td>
+				</tr>
+
+
+			</table>
+		</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+
+</body>
+</html>

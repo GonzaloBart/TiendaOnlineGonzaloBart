@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments :: head"></head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+
+
+	<div class="table-container">
+
+		<h3 class="h3-tabla">Lista Pedidos</h3>
+		<div>
+			<table class="table table-striped">
+				<tr>
+					<th>ID</th>
+					<th>Estado</th>
+					<th>Num Factura</th>
+					<th>Metodo Pago</th>
+					<th>Usuario</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th>Gestión Estado</th>
+					<th></th>
+					<th></th>
+
+					<!-- HTML !-->
+				</tr>
+
+				<tr th:each="pedido : ${list}">
+					<td th:text="${pedido.id}">Id</td>
+					<td th:text="${pedido.estado}">Id</td>
+					<td th:text="${pedido.numFactura}">Id</td>
+					<td th:text="${pedido.metodoPago.metodoPago}">Id</td>
+					<td th:text="${pedido.usuario.email}"></td>
+
+					<td><a th:href="@{/details/list/order/}+${pedido.id}">Detalles</a></td>
+					<td><a th:href="@{/order/delete/}+${pedido.id}">Eliminar</a></td>
+					<td><a th:href="@{/order/edit/}+${pedido.id}">Editar</a></td>
+
+					<div th:if="${pedido.estado}==pendiente">
+
+						<form th:action="@{/order/status}" method="post">
+							<td><select name="estado">
+									<option th:value="pendiente">Pendiente</option>
+									<option th:value="enviado">Enviado</option>
+									<option th:value="cancelado">Cancelado</option>
+							</select></td> <input type="hidden" name="id" th:value="${pedido.id}" /> <input
+								type="hidden" name="usuario" th:value="${pedido.usuario.id}" />
+							<input type="hidden" name="metodoPago"
+								th:value="${pedido.metodoPago.id}" /> <input type="hidden"
+								name="total" th:value="${pedido.total}" />
+
+							<td>
+								<p>
+									<button class="button-12" role="button" type="submit"
+										value="Enviar" />
+									OK
+									</button>
+								</p>
+							</td>
+						</form>
+					</div>
+					<div th:if="${pedido.estado}=='pendiente de cancelacion'">
+
+						<form th:action="@{/order/status}" method="post">
+							<td><select name="estado">
+									<option th:value="pendiente">Pendiente</option>
+									<option th:value="cancelado">Cancelado</option>
+							</select></td> <input type="hidden" name="id" th:value="${pedido.id}" /> <input
+								type="hidden" name="usuario" th:value="${pedido.usuario.id}" />
+							<input type="hidden" name="metodoPago"
+								th:value="${pedido.metodoPago.id}" /> <input type="hidden"
+								name="total" th:value="${pedido.total}" />
+
+							<td>
+								<p>
+									<button class="button-12" role="button" type="submit"
+										value="Enviar" />
+									OK
+									</button>
+								</p>
+							</td>
+						</form>
+					</div>
+					<div th:if="${pedido.estado}!=pendiente">
+						<td th:text="${pedido.estado}">Id</td>
+						<td></td>
+					</div>
+
+
+					<td th:switch="${pedido.estado}"><span th:case="'pendiente'"
+						th:text="${pedido.estado}"></span> <span
+						th:case="'pendiente de cancelacion'"></span>
+						<div th:case="*"></div></td>
+
+
+				</tr>
+
+
+			</table>
+		</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+
+</body>
+</html>

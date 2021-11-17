@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+
+<head th:replace="fragments :: head">
+
+</head>
+
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+
+
+	<div class="table-container">
+
+<div>
+		<h3 class="h3-tabla">Lista Productos</h3> <button><a th:href="@{/product/export}">Exportar Productos</a></button>
+					<button><a th:href="@{/product/import}">Importar Productos</a></button></div>
+					<br>
+					<br>
+					
+		<div>
+			<table class="table table-striped">
+		
+					
+				
+				<tr>
+					<th>Categoria</th>
+					<th>Nombre</th>
+					<th>Descripción</th>
+					<th>Precio</th>
+					<th>Stock</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					
+					
+				</tr>
+
+				<tr th:each="producto: ${productList}">
+
+					<td th:text="${producto.categoria.nombre}"></td>
+					<td th:text="${producto.nombre}"></td>
+					<td th:text="${producto.descripcion}"></td>
+					<td th:text="${producto.precio}"></td>
+					<td th:text="${producto.stock}"></td>
+					<td><a th:href="@{/product/delete/}+${producto.id}">Eliminar</a></td>
+					<td><a th:href="@{/product/edit/}+${producto.id}">Editar</a></td>
+					<td><a th:href="@{/product/detail/}+${producto.id}">Ver
+							Detalle</a></td>
+					
+
+
+
+
+				</tr>
+
+
+			</table>
+		</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+
+</body>
+</html>

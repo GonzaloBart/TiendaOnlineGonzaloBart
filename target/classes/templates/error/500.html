@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments :: head"></head>
+
+<body>
+	<div th:replace="fragments :: nav-container"></div>
+
+<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>500</h1>
+				<h2>Error</h2>
+				<p>Accede a tu cuenta para ver tu perfil</p>
+				
+			</div>
+			<a th:href="@{/}">Pagina Principal</a>
+		</div>
+	</div>
+	<footer th:replace="fragments :: footer"></footer>
+	<div th:replace="fragments :: scripts"></div>
+
+</body>
+</html>
